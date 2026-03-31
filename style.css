@@ -1,0 +1,147 @@
+/* ฟ้อนต์ */
+body {
+  font-family: 'Kanit', sans-serif;
+  background: linear-gradient(135deg, #ffd6e0, #e0f7ff);
+  margin: 0;
+}
+
+/* กล่องหลัก */
+.container, .card {
+  width: 360px;
+  margin: 70px auto;
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* หัวข้อ */
+h2 {
+  color: #ff6b9a;
+  margin-bottom: 15px;
+}
+
+/* input + select */
+input, select {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  outline: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ปุ่มหลัก */
+button {
+  width: 90%;
+  padding: 10px;
+  background: #ff8fab;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff5c8a;
+  transform: scale(1.05);
+}
+
+/* เมนู */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+/* ปุ่มเมนู */
+.menu button {
+  width: auto;
+  padding: 8px 15px;
+  background: #ffd6e0;
+  color: #333;
+}
+
+.menu button:hover {
+  background: #ffafcc;
+}
+
+/* section */
+.section {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+/* ตาราง */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th {
+  background: #ffcad4;
+  color: #333;
+  padding: 8px;
+}
+
+table td {
+  padding: 8px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+/* list */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 10px;
+  background: #f1f3ff;
+}
+
+/* alert */
+#alert {
+  color: #ff4d6d;
+  text-align: center;
+}
+
+/* status */
+#total {
+  text-align: center;
+  font-weight: bold;
+  white-space: pre-line;
+}
+
+/* text */
+h3, p {
+  color: #444;
+}
+
+/* checkbox */
+label {
+  font-size: 14px;
+  color: #555;
+}
+#list li {
+  text-align: left;
+  padding: 10px;
+  background: #f8f9ff;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+#list b {
+  color: #ff6b9a;
+}

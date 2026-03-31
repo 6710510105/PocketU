@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plan</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ฟ้อนต์ -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container cute-box">
+  <h2 class="title">📊 แผนการใช้เงิน</h2>
+
+  <h3 id="summary" class="text"></h3>
+  <h3 id="status" class="status-text"></h3>
+  <p id="advice" class="advice-text"></p>
+
+  <br>
+  <button class="cute-btn" onclick="window.history.back()">⬅️ กลับ</button>
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("data")) || [];
+const studentId = localStorage.getItem("studentId");
+const goal = Number(localStorage.getItem("goal")) || 3000;
+
+let income = 0;
+let expense = 0;
+
+// คำนวณ
+data
+  .filter(d => d.studentId === studentId)
+  .forEach(d => {
+    if(d.type === "expense") expense += d.amount;
+    else income += d.amount;
+  });
+
+const balance = income - expense;
+
+// แสดงสรุป
+document.getElementById("summary").innerText =
+  `รายรับ: ${income} | รายจ่าย: ${expense} | คงเหลือ: ${balance}`;
+
+// วิเคราะห์
+let status = "";
+let advice = "";
+
+if(balance < 0){
+  status = "🔴 เสี่ยง";
+  advice = "คุณใช้เงินเกินรายรับ ควรลดค่าใช้จ่ายทันที";
+}
+else if(expense > goal){
+  status = "⚠️ เกินงบ";
+  advice = "คุณใช้เงินเกินงบที่ตั้งไว้ ควรวางแผนใหม่";
+}
+else if(balance < 500){
+  status = "🟡 ปานกลาง";
+  advice = "เงินเหลือน้อย ควรควบคุมรายจ่าย";
+}
+else{
+  status = "💚 ดีมาก";
+  advice = "คุณบริหารเงินได้ดี สามารถออมเพิ่มได้";
+}
+
+// แสดงผล
+document.getElementById("status").innerText = "สถานะ: " + status;
+document.getElementById("advice").innerText = advice;
+</script>
+
+</body>
+</html>

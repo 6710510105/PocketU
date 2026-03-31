@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ฟ้อนต์ -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container cute-box">
+
+  <h2 class="title">📒 บันทึกรายรับ-รายจ่าย</h2>
+
+  <label class="label">เลือกวันที่</label>
+  <input type="date" id="date" class="cute-input">
+
+  <input id="amount" class="cute-input" placeholder="จำนวนเงิน">
+
+  <select id="type" class="cute-input">
+    <option value="income">รายรับ</option>
+    <option value="expense">รายจ่าย</option>
+  </select>
+
+  <select id="category" class="cute-input">
+    <option value="">-- เลือกหมวดหมู่ --</option>
+    <option value="food">อาหาร</option>
+    <option value="travel">เดินทาง</option>
+    <option value="shopping">ของใช้</option>
+    <option value="other">อื่นๆ</option>
+  </select>
+
+  <br><br>
+  <button class="cute-btn" onclick="addData()">บันทึก</button>
+
+  <h3 id="alert" class="text"></h3>
+  <h3 id="daily" class="text"></h3>
+  <h3 id="total" class="text"></h3>
+
+  <br>
+  <button class="cute-btn secondary" onclick="goBudget()">ดูงบประมาณ</button>
+
+  <div class="menu">
+    <button class="menu-btn" onclick="showSection('chart')">📊 กราฟ</button>
+    <button class="menu-btn" onclick="showSection('table')">📋 ตาราง</button>
+    <button class="menu-btn" onclick="showSection('daily')">📅 รายวัน</button>
+  </div>
+
+  <!-- 📊 กราฟ -->
+  <div id="chartSection">
+    <h3 class="subtitle">📊 กราฟสรุป</h3>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <!-- 📋 ตาราง -->
+  <div id="tableSection" style="display:none;">
+    <h3 class="subtitle">📋 สรุปรายเดือน</h3>
+    <table id="monthlyTable" class="cute-table">
+      <thead>
+        <tr>
+          <th>เดือน</th>
+          <th>รายรับ</th>
+          <th>รายจ่าย</th>
+          <th>คงเหลือ</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- 🔥 เพิ่มตรงนี้ -->
+    <h3 class="subtitle">📅 สรุปรายวัน</h3>
+    <table id="dailyTable" class="cute-table">
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>รายรับ</th>
+          <th>รายจ่าย</th>
+          <th>คงเหลือ</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- 📅 รายการ -->
+  <div id="dailySection" style="display:none;">
+    <h3 class="subtitle">📅 รายการของวันนี้</h3>
+    <ul id="list" class="cute-list"></ul>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Budget</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ฟ้อนต์น่ารัก -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container cute-box">
+  <h2 class="title">💰 งบประมาณของคุณ</h2>
+
+  <p id="budgetText" class="budget-text"></p>
+
+  <h3 class="subtitle">✨ ตั้งงบต่อเดือน</h3>
+  
+  <input id="goalInput" class="cute-input" placeholder="เช่น 3000">
+  
+  <br><br>
+  
+  <button class="cute-btn" onclick="saveGoal()">บันทึกเป้าหมาย</button>
+
+  <br><br>
+  
+  <button class="cute-btn secondary" onclick="goPlan()">ดูแผนการใช้เงิน</button>
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("data")) || [];
+const studentId = localStorage.getItem("studentId");
+const goal = localStorage.getItem("goal") || 0;
+
+let total = 0;
+
+data
+  .filter(d => d.studentId === studentId)
+  .forEach(d => {
+    if(d.type === "expense") total -= d.amount;
+    else total += d.amount;
+  });
+
+// แสดงผล
+document.getElementById("budgetText").innerText =
+  "เงินคงเหลือ: " + total + " | งบ: " + goal;
+
+// บันทึกงบ
+function saveGoal(){
+  const g = document.getElementById("goalInput").value;
+  localStorage.setItem("goal", g);
+  alert("บันทึกแล้ว!");
+  location.reload();
+}
+
+// ไปหน้า plan
+function goPlan(){
+  window.location.href = "plan.html";
+}
+</script>
+
+</body>
+</html>
